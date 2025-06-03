@@ -9,20 +9,21 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class GabutTest {
 
     @Test
-    void testCreateGabut (){
+    void testCreateGabut() {
         ApplicationContext contextTestGabut = new AnnotationConfigApplicationContext(GabutConfiguration.class);
 
         Assertions.assertNotNull(contextTestGabut);
     }
 
     @Test
-    void testGetBeanGabut(){
+    void testGetBeanGabut() {
         ApplicationContext contextTestGabut = new AnnotationConfigApplicationContext(GabutConfiguration.class);
 
+        // bean merupakan singleton, artinya jika kita mengakses bean yang sama, maka dia akan mengembalikan object yang sama.
         Gabut gabut1 = contextTestGabut.getBean(Gabut.class);
         Gabut gabut2 = contextTestGabut.getBean(Gabut.class);
 
-        Assertions.assertSame(gabut1,gabut2);
+        Assertions.assertSame(gabut1, gabut2);
     }
 
 }
