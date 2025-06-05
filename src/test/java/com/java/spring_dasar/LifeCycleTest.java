@@ -1,6 +1,7 @@
 package com.java.spring_dasar;
 
 import com.java.spring_dasar.data.Connection;
+import com.java.spring_dasar.data.Server;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,12 +17,12 @@ public class LifeCycleTest {
     @BeforeEach
     void setUp() {
         configurableApplicationContext = new AnnotationConfigApplicationContext(LifeCycleConfiguration.class);
-//        configurableApplicationContext.registerShutdownHook();
+        configurableApplicationContext.registerShutdownHook();
     }
 
     @AfterEach
     void tearDown() {
-        configurableApplicationContext.close(); // secara manual
+//        configurableApplicationContext.close(); // secara manual
     }
 
 
@@ -33,6 +34,11 @@ public class LifeCycleTest {
         // adalah "import com.java.spring_dasar.data.Connection;"
         // file tempat bean yang kubuat
         Connection connection = configurableApplicationContext.getBean(Connection.class);
+    }
+
+    @Test
+    void server() {
+        Server server = configurableApplicationContext.getBean(Server.class);
     }
 
 }
