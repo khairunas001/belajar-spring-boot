@@ -1,5 +1,6 @@
 package com.java.spring_dasar;
 
+import com.java.spring_dasar.data.MultiFoo;
 import com.java.spring_dasar.repository.CategoryRepository;
 import com.java.spring_dasar.repository.CustomerRepository;
 import com.java.spring_dasar.repository.ProductRepository;
@@ -73,5 +74,12 @@ public class ComponentTest {
         Assertions.assertSame(premiumCustomerRepository,customerService.getPremiumCustomerRepository());
     }
 
+    @Test
+    void testObjectProvider(){
+        MultiFoo multiFoo = applicationContext.getBean(MultiFoo.class);
+
+        // harus ada 3 foo karena pada FooConfiguration ada 3 Foo
+        Assertions.assertEquals(3,multiFoo.getFoos().size());
+    }
 
 }
